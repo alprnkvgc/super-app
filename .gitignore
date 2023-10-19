@@ -366,3 +366,4 @@ FodyWeavers.xsd
 /webapi.db
 /webapi.db-shm
 /webapi.db-wal
+*.db
