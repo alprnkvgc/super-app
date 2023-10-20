@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspNETWebApi.Controllers
+namespace Server.Controllers
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]

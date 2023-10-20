@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Versioning;
-namespace AspNETWebApi
+
+namespace Server.Extensions
 {
     public static class ApiVersioningExtension
     {

@@ -1,9 +1,9 @@
-using AspNETWebApi.Features.Products.Commands;
-using AspNETWebApi.Features.Products.Queries;
-using AspNETWebApi.Features.Products.Queries.GetById;
+using Application.Features.Products.Commands;
+using Application.Features.Products.Queries.GetAll;
+using Application.Features.Products.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspNETWebApi.Controllers.v1
+namespace Server.Controllers.v1
 {
     [ApiVersion("1.0")]
     [ApiController]
@@ -50,7 +50,7 @@ namespace AspNETWebApi.Controllers.v1
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await _mediator.Send(new DeleteProductCommand { Id = id}));
+            return Ok(await _mediator.Send(new DeleteProductCommand { Id = id }));
         }
     }
 
