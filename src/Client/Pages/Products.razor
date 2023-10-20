@@ -1,31 +1,22 @@
-﻿
-@page "/products"
-<h3>Products</h3>
+﻿@page "/products"
 
-
-@if (_productList.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Ürün Adı</th>
-                <th>Miktar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var product in _productList)
-            {
-                <tr>
-                    <td>@product.Id</td>
-                    <td>@product.Title</td>
-                    <td>@product.Quantity</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Ürün bulunamadı.</p>
-}
+<MudTable Items="@_productList" Dense="true" Hover="true" Bordered="true" Striped="true">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Products</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>ID</MudTh>
+        <MudTh>Title</MudTh>
+        <MudTh>Quantity</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="Title">@context.Title</MudTd>
+        <MudTd DataLabel="Quantity">@context.Quantity</MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+</MudTable>

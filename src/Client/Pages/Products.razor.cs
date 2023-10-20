@@ -3,6 +3,7 @@ using Client.Infrastructure.Managers.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using System.Net;
+using static MudBlazor.CategoryTypes;
 
 namespace Client.Pages
 {
@@ -11,6 +12,7 @@ namespace Client.Pages
         [Inject] private IProductManager ProductManager { get; set; }
         private List<ProductsResponse> _productList = new();
         private ProductsResponse _product = new();
+        private string searchString1 = "";
 
         protected override async Task OnInitializedAsync()
         {
