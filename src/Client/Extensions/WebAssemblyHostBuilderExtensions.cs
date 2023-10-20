@@ -1,5 +1,6 @@
 ﻿using Client.Infrastructure.Managers;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using MudBlazor.Services;
 using System.Globalization;
 
 namespace Client.Extensions
@@ -20,6 +21,13 @@ namespace Client.Extensions
             builder
                 .Services
                 .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())
+                .AddMudServices(configuration =>
+                {
+                    configuration.SnackbarConfiguration.HideTransitionDuration = 100;
+                    configuration.SnackbarConfiguration.ShowTransitionDuration = 100;
+                    configuration.SnackbarConfiguration.VisibleStateDuration = 3000;
+                    configuration.SnackbarConfiguration.ShowCloseIcon = false;
+                })
                 .AddManagers()
                 .AddScoped(sp => sp
                     .GetRequiredService<IHttpClientFactory>()
