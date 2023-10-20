@@ -1,0 +1,31 @@
+﻿
+@page "/products"
+<h3>Products</h3>
+
+
+@if (_productList.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ürün Adı</th>
+                <th>Miktar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in _productList)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Title</td>
+                    <td>@product.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Ürün bulunamadı.</p>
+}
