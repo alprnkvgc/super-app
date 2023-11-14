@@ -1,4 +1,4 @@
-namespace AspNETWebApi
+namespace Server
 {
     public class Program
     {

@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+﻿using Application;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Application.Extensions;
+using Server.Extensions;
 
-namespace AspNETWebApi
+namespace Server
 {
     public class Startup
     {
@@ -16,9 +19,11 @@ namespace AspNETWebApi
             services.AddCors();
             services.AddRouting();
             services.AddControllers();
+            services.AddApplicationLayer();
             services.AddAndConfigureApiVersioning();
             services.ConfigureSwagger();
             services.AddAutoMapper(typeof(Startup));
+            services.AddRazorPages();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
@@ -26,6 +31,8 @@ namespace AspNETWebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             app.UseCors();
+            app.UseStaticFiles();
+            app.UseBlazorFrameworkFiles();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -34,7 +41,7 @@ namespace AspNETWebApi
             app.UseRouting();
             app.UseHttpsRedirection();
             app.UseAuthorization();
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
+            app.UseEndpoints();
         }
     }
 }
